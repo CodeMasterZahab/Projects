@@ -1,0 +1,238 @@
+//Created a Calculator using Kotlin Language
+.xml file 
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tw_output"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="64dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/linear1">
+        <Button
+            android:id="@+id/btn_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7"
+            android:textSize="32dp"/>
+        <Button
+            android:id="@+id/btn_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8"
+            android:textSize="32dp"/>
+        <Button
+            android:id="@+id/btn_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9"
+            android:textSize="32dp"/>
+        <Button
+            android:id="@+id/btn_div"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textSize="32dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/linear2">
+        <Button
+            android:id="@+id/btn_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:textSize="32dp"/>
+        <Button
+            android:id="@+id/btn_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textSize="32dp"/>
+        <Button
+            android:id="@+id/btn_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            android:textSize="32dp"/>
+        <Button
+            android:id="@+id/btn_mult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:textSize="32dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/linear3">
+        <Button
+            android:id="@+id/btn_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="32dp"/>
+        <Button
+            android:id="@+id/btn_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:textSize="32dp"/>
+        <Button
+            android:id="@+id/btn_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textSize="32dp"/>
+        <Button
+            android:id="@+id/btn_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="32dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/linear4">
+        <Button
+            android:id="@+id/btn_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="32dp"/>
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C"
+            android:textSize="32dp"/>
+        <Button
+            android:id="@+id/btn_equal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="="
+            android:textSize="32dp"/>
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="32dp"/>
+    </LinearLayout>
+</RelativeLayout>
+
+
+
+.kt file
+package com.example.calculator
+
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var display: TextView
+    private var currentInput: String = ""
+    private var operand1: Double = 0.0
+    private var operator: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        display = findViewById(R.id.tw_output)
+
+        // Define buttons
+        val buttons = listOf(
+            R.id.btn_0, R.id.btn_1, R.id.btn_2, R.id.btn_3, R.id.btn_4,
+            R.id.btn_5, R.id.btn_6, R.id.btn_7, R.id.btn_8, R.id.btn_9,
+            R.id.btn_add, R.id.btn_min, R.id.btn_mult, R.id.btn_div,
+            R.id.btn_equal, R.id.btn_clear
+        )
+
+        // Set onClickListeners for all buttons
+        buttons.forEach { id ->
+            findViewById<Button>(id).setOnClickListener { handleButtonClick(it) }
+        }
+    }
+
+    private fun handleButtonClick(view: View) {
+        val button = view as Button
+        when (button.id) {
+            R.id.btn_clear -> clear()
+            R.id.btn_equal -> calculate()
+            else -> handleInput(button.text.toString())
+        }
+    }
+
+    private fun handleInput(input: String) {
+        if (input in listOf("+", "-", "*", "/")) {
+            if (currentInput.isNotEmpty()) {
+                operand1 = currentInput.toDouble()
+                currentInput = ""
+            }
+            operator = input
+            display.text = "$operand1 $operator"
+        } else {
+            currentInput += input
+            display.text = if (operator != null) "$operand1 $operator $currentInput" else currentInput
+        }
+    }
+
+    private fun calculate() {
+        if (operator != null && currentInput.isNotEmpty()) {
+            val operand2 = currentInput.toDoubleOrNull() ?: return
+            val result = when (operator) {
+                "+" -> operand1 + operand2
+                "-" -> operand1 - operand2
+                "*" -> operand1 * operand2
+                "/" -> operand1 / operand2
+                else -> 0.0
+            }
+            display.text = "$operand1 $operator $operand2 = $result"
+            operand1 = result
+            currentInput = ""
+            operator = null
+        }
+    }
+
+    private fun clear() {
+        currentInput = ""
+        operand1 = 0.0
+        operator = null
+        display.text = "0"
+    }
+}
