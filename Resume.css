@@ -1,0 +1,85 @@
+/* Resume.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+}
+
+header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+}
+
+h1, h2, h3, h4 {
+    margin: 10px 0;
+    color: #2c3e50;
+}
+
+section {
+    margin: 20px 0;
+}
+
+ul, ol {
+    padding-left: 20px;
+}
+
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    h3, h4 {
+        font-size: 1.1rem;
+    }
+
+    p, li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    p, li {
+        font-size: 0.95rem;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
+}
