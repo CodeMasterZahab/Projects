@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="form.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form id="multistep">
+            <!-- Name and Email -->
+            <div class="step" id="step1">
+                <h2>Personal Info</h2>
+                <input name="name" placeholder="Name" required />
+                <input name="email" type="email" placeholder="Email" required />
+            </div>
+
+            <!-- Upload Picture -->
+            <div class="step hidden" id="step2">
+                <h2>Upload Profile Picture</h2>
+                <input type="file" id="ProfilePic" accept="image/*">
+                <img id="preview" class="preview-img" />
+            </div>
+
+            <!-- Review and Submit -->
+            <div class="step hidden" id="step3">
+                <h2>Review and Submit</h2>
+                <div id="summary"></div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <button type="button" id="prevbtn">Previous</button>
+                <button type="button" id="nxtbtn">Next</button>
+                <button type="submit" id="submit" class="hidden">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
